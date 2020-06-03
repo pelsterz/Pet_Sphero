@@ -1,0 +1,6 @@
+<launch>
+	<node name="mapping" pkg="sphero_communication" type="mapping.py" output="screen" />
+	<node name="sphero" pkg="sphero_communication" type="sphero.py" output="screen">
+		<param name="address" value="D6:88:1B:3D:FC:66" />
+	</node>
+</launch>

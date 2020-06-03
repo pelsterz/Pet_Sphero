@@ -1,0 +1,2 @@
+emotion_detection:sphero_communication
+-DCATKIN_DEVEL_PREFIX=/home/zack/rob421/Pet_Sphero/ws/devel -DCMAKE_INSTALL_PREFIX=/home/zack/rob421/Pet_Sphero/ws/install -G Unix Makefiles

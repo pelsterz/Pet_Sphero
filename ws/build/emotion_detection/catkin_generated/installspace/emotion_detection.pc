@@ -1,0 +1,8 @@
+prefix=/home/zack/rob421/Pet_Sphero/ws/install
+
+Name: emotion_detection
+Description: Description of emotion_detection
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,3 @@
+<launch>
+	<node name="emotion" pkg="emotion_detection" type="emotion.py" output="screen" />
+</launch>
