@@ -1,24 +1,13 @@
-# Marco_Polo_Sphero
- Marco Polo in bowling form. A Sphero BOLT pulls a trailer with two microphones to detect pins with speakers in them!
-
+# Pet_Sphero
+ A program that uses a Sphero to keep the user in check while they work on the computer!
+ 
 # Boot Up Process
-1. Run the core:
+1. Run roslaunch with sphero_communication launch file:
 ```
-roscore
+roslaunch sphero_communication sphero.launch
 ```
-2. Run the sphero node:
+2. Run emotion recognition node:
 ```
-rosrun sphero_communication sphero.py _address:="D6:88:1B:3D:FC:66"
+rosrun emotion_detection emotion.py
 ```
-3. Run the analysis node:
-```
-rosrun sphero_communication analysis.py
-```
-4. Run the update node:
-```
-rosrun sphero_communication update.py
-```
-5. Run the rosserial node:
-```
-rosrun rosserial_arduino serial_node.py _port:=/dev/ttyUSB0
-```
+3. Enjoy!
