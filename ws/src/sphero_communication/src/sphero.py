@@ -2,7 +2,7 @@
 
 import rospy
 
-from std_msgs.msg import UInt8
+from std_msgs.msg import UInt8MultiArray
 
 import sys
 from time import sleep
@@ -89,9 +89,197 @@ def energetic_bump_spin():
             sleep(0.10)
             sphero.driving.drive_with_heading(0, heading, Direction.forward)
             sleep(0.65)
+
+        sphero.driving.tank_drive(100, 90, Direction.forward)
+        sleep(4)
+        sphero.driving.drive_with_heading(0, heading, Direction.forward)
+        sleep(1)
+
     return "energetic bump and spin performed"
 
-def eyes():
+def low_eyes():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Show eyes in matrix")
+        pixels = [
+                # Left Eye
+                Pixel(x=0,y=3),
+                Pixel(x=1,y=2),
+                Pixel(x=1,y=3),
+                Pixel(x=2,y=1),
+                Pixel(x=2,y=2),
+                Pixel(x=2,y=3),
+                # Right Eye
+                Pixel(x=5,y=1),
+                Pixel(x=5,y=2),
+                Pixel(x=5,y=3),
+                Pixel(x=6,y=2),
+                Pixel(x=6,y=3),
+                Pixel(x=7,y=3),
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def low_look_left():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Look left")
+        pixels = [
+                # Left Eye
+                Pixel(x=1,y=3),
+                Pixel(x=0,y=3),
+                # Right Eye
+                Pixel(x=6,y=3),
+                Pixel(x=5,y=3)
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def low_look_right():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Look right")
+        pixels = [
+                # Left Eye
+                Pixel(x=1,y=3),
+                Pixel(x=2,y=3),
+                # Right Eye
+                Pixel(x=6,y=3),
+                Pixel(x=7,y=3)
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def dizzy_eyes():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Show eyes in matrix")
+        pixels = [
+                # Left Eye
+                Pixel(x=0,y=1),
+                Pixel(x=0,y=2),
+                Pixel(x=0,y=3),
+                Pixel(x=1,y=1),
+                Pixel(x=1,y=2),
+                Pixel(x=1,y=3),
+                Pixel(x=2,y=1),
+                Pixel(x=2,y=2),
+                Pixel(x=2,y=3),
+                # Right Eye
+                Pixel(x=5,y=1),
+                Pixel(x=5,y=2),
+                Pixel(x=5,y=3),
+                Pixel(x=6,y=1),
+                Pixel(x=6,y=2),
+                Pixel(x=6,y=3),
+                Pixel(x=7,y=1),
+                Pixel(x=7,y=2),
+                Pixel(x=7,y=3)
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(red=0xff,green=0xff,blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def dizzy_look_left():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Look left")
+        pixels = [
+                # Left Eye
+                Pixel(x=1,y=3),
+                Pixel(x=2,y=3),
+                # Right Eye
+                Pixel(x=6,y=1),
+                Pixel(x=7,y=1)
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def dizzy_look_right():
+    with Sphero(mac_address=mac_address) as sphero:
+        sleep(2)
+        print("Look right")
+        pixels = [
+                # Left Eye
+                Pixel(x=1,y=3),
+                Pixel(x=0,y=3),
+                # Right Eye
+                Pixel(x=6,y=1),
+                Pixel(x=5,y=1)
+        ]
+        colors = [
+                # Left Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff),
+                # Right Eye
+                Color(red=0xff,green=0xff,blue=0xff),
+                Color(blue=0xff)
+        ]
+        for (pixel, color) in zip(pixels, colors):
+            sphero.user_io.set_led_matrix_pixel(pixel,color)
+
+def normal_eyes():
     with Sphero(mac_address=mac_address) as sphero:
         sleep(2)
         print("Show eyes in matrix")
@@ -142,7 +330,7 @@ def eyes():
         for (pixel, color) in zip(pixels, colors):
             sphero.user_io.set_led_matrix_pixel(pixel,color)
 
-def look_left():
+def happy_look_left():
     with Sphero(mac_address=mac_address) as sphero:
         sleep(2)
         print("Look left")
@@ -165,7 +353,7 @@ def look_left():
         for (pixel, color) in zip(pixels, colors):
             sphero.user_io.set_led_matrix_pixel(pixel,color)
 
-def look_right():
+def happy_look_right():
     with Sphero(mac_address=mac_address) as sphero:
         sleep(2)
         print("Look right")
@@ -189,18 +377,21 @@ def look_right():
             sphero.user_io.set_led_matrix_pixel(pixel,color)
 
 def sad_eyes():
-    eyes()
-    look_left()
+    for i in range(3):
+        low_eyes()
+        low_look_right()
     return "sad eyes performed"
 
 def flashing_eyes():
-    eyes()
-    look_left()
+    for i in range(3):
+        dizzy_eyes()
+        dizzy_look_right()
     return "flashing eyes performed"
 
 def happy_eyes():
-    eyes()
-    look_left()
+    for i in range(3):
+        normal_eyes()
+        happy_look_right()
     return "happy eyes performed"
 
 def sphero_wake():
@@ -230,12 +421,12 @@ def map_to_message(map_message):
     func = switcher.get(map_message, nothing)
     return func()
 
-def callback(emotion):
+def callback(command):
     sphero_wake()
     print("performing action")
-    print(map_to_action(emotion.data))
+    print(map_to_action(command.data[0]))
     print("performing message")
-    print(map_to_message(emotion.data))
+    print(map_to_message(command.data[1]))
     print("finished performing")
     sphero_sleep()
 
@@ -253,7 +444,7 @@ if __name__ == "__main__":
         sys.exit()
     
     # Setup subscriber
-    sub = rospy.Subscriber('/mapping',UInt8,callback)
+    sub = rospy.Subscriber('/mapping',UInt8MultiArray,callback)
 
     print("sphero setup")
     
